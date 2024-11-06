@@ -11,7 +11,7 @@ on:
     #         │ │ │ ┌──── month (1 - 12 or JAN-DEC)
     #         │ │ │ │ ┌── day of the week (0 - 6 or SUN-SAT)
     #         │ │ │ │ │
-    - cron: '51 10 * * *'  # 调整为北京时间10:48 AM触发
+    - cron: '58 10 * * *'  # 调整为北京时间10:48 AM触发
 
 jobs:
   run-check-in: # 任务名
@@ -30,6 +30,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
+          
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.1.0
+
+          
           
       - name: 安装依赖  
         run: |
