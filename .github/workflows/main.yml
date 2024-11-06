@@ -11,16 +11,23 @@ on:
     #         │ │ │ ┌──── month (1 - 12 or JAN-DEC)
     #         │ │ │ │ ┌── day of the week (0 - 6 or SUN-SAT)
     #         │ │ │ │ │
-    - cron: '48 2 * * *'
- 
+    - cron: '48 10 * * *'  # 调整为北京时间10:48 AM触发
+
 jobs:
   run-check-in: # 任务名
     runs-on: ubuntu-latest
+
+    permissions:  # 权限配置
+      contents: read  # 读取仓库内容
+      issues: write    # 写入 issues
+      pull-requests: write  # 写入 PR
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         
-      - uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: '20.x'
           
